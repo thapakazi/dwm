@@ -31,6 +31,7 @@ static const Rule rules[] = {
 	{ "Brave-browser", NULL, NULL,      2,       0,           -1 },
     { "TelegramDesktop",NULL,NULL,      4,       0,           -1 },
     { "Emacs",  NULL, NULL,             1,       0,           -1 },
+    { "viber",  NULL, NULL,             5,       0,           -1 },
 };
 
 /* layout(s) */
@@ -69,7 +70,15 @@ static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
 static const char *upbri[]   = { "xbacklight", "+10",     NULL };
 static const char *downbri[] = { "xbacklight", "-10",     NULL };
 
-static const char *screenshotcmd[]  = { "import", "/tmp/screenshot.png", NULL };
+/* static time_t t = time(NULL); */
+/* struct tm tm = *localtime(&t); */
+/* static char now[16]; */
+/* sprintf(now, "%d_%d_%d_%d_%d_%d",tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec); */
+/* static char screenshot_file[40] */
+/* sprintf(screenshot_file, "/tmp/screenshot-%s.png",now) */
+static const char *screenshotcmd[]  = { "/home/thapakazi/repos/thapakazi/kutto_kodalo/helpers/screenshot.sh", NULL };
+
+/* bindsym --release $sup+c exec --no-startup-id import ~/Pictures/screenshots/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png */
 
   
 static Key keys[] = {
@@ -107,7 +116,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
-
     { 0,                              XF86XK_AudioLowerVolume,			   spawn,          {.v = downvol    } },
 	{ 0,                              XF86XK_AudioRaiseVolume,			   spawn,          {.v = upvol      } },
     { 0,                              XF86XK_AudioMute,			   spawn,          {.v = mutevol    } },
