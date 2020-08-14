@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10","NotoColorEmoji:pixelsize=10:antialias=true:autohint=true" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "monospace:size=15","NotoColorEmoji:pixelsize=23:antialias=true:autohint=true" };
+static const char dmenufont[]       = "monospace:size=15";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -19,7 +19,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "🐧", "🦁", "👻", "👾", "💖", "💯", "😎", "🙈", "🎶" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -31,6 +31,7 @@ static const Rule rules[] = {
 	{ "Brave-browser", NULL, NULL,      2,       0,           -1 },
     { "TelegramDesktop",NULL,NULL,      4,       0,           -1 },
     { "Emacs",  NULL, NULL,             1,       0,           -1 },
+    { "viber",  NULL, NULL,             5,       0,           -1 },
 };
 
 /* layout(s) */
@@ -69,8 +70,8 @@ static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
 static const char *upbri[]   = { "xbacklight", "+10",     NULL };
 static const char *downbri[] = { "xbacklight", "-10",     NULL };
 
-static const char *screenshotcmd[]  = { "import", "/tmp/screenshot.png", NULL };
-
+/* sprintf(screenshot_file, "/tmp/screenshot-%s.png",now) */
+static const char *screenshotcmd[]  = { "/home/thapakazi/repos/thapakazi/kutto_kodalo/helpers/screenshot.sh", NULL };
   
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -107,7 +108,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
-
     { 0,                              XF86XK_AudioLowerVolume,			   spawn,          {.v = downvol    } },
 	{ 0,                              XF86XK_AudioRaiseVolume,			   spawn,          {.v = upvol      } },
     { 0,                              XF86XK_AudioMute,			   spawn,          {.v = mutevol    } },
@@ -124,7 +124,14 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	/* { ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } }, */
+
+    { ClkStatusText,        0,              Button1,        sigdwmblocks,   {.i = 1} },
+	{ ClkStatusText,        0,              Button2,        sigdwmblocks,   {.i = 2} },
+	{ ClkStatusText,        0,              Button3,        sigdwmblocks,   {.i = 3} },
+    { ClkStatusText,        0,              Button4,        sigdwmblocks,   {.i = 4} },
+    { ClkStatusText,        0,              Button5,        sigdwmblocks,   {.i = 5} },
+    
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
