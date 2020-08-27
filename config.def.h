@@ -67,8 +67,8 @@ static const char *upvol[]   = { "amixer", "set", "Master", "5%+",     NULL };
 static const char *downvol[] = { "amixer", "set", "Master", "5%-",     NULL };
 static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
 
-static const char *upbri[]   = { "xbacklight", "+10",     NULL };
-static const char *downbri[] = { "xbacklight", "-10",     NULL };
+static const char *upbri[]   = { "xbacklight", "+5",     NULL };
+static const char *downbri[] = { "xbacklight", "-5",     NULL };
 
 /* sprintf(screenshot_file, "/tmp/screenshot-%s.png",now) */
 static const char *screenshotcmd[]  = { "/home/thapakazi/repos/thapakazi/kutto_kodalo/helpers/screenshot.sh", NULL };
